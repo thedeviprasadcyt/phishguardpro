@@ -1,0 +1,174 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Base Styles ──────────────────────────────────── */
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: #0a192f;
+    color: #e2e8f0;
+    overflow-x: hidden;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0a192f;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #00d4ff, #2979ff);
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #26e2ff, #448aff);
+  }
+}
+
+/* ── Component Utilities ──────────────────────────── */
+@layer components {
+  /* Glassmorphism Card */
+  .glass-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+
+  .glass-card:hover {
+    border-color: rgba(0, 212, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 15px rgba(0, 212, 255, 0.1);
+  }
+
+  /* Neon Button */
+  .btn-neon {
+    @apply relative px-6 py-3 font-semibold text-white rounded-xl overflow-hidden transition-all duration-300;
+    background: linear-gradient(135deg, #00d4ff 0%, #2979ff 100%);
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+  }
+
+  .btn-neon:hover {
+    box-shadow: 0 0 25px rgba(0, 212, 255, 0.5), 0 0 50px rgba(0, 212, 255, 0.2);
+    transform: translateY(-2px);
+  }
+
+  .btn-neon:active {
+    transform: translateY(0);
+  }
+
+  .btn-neon::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+  }
+
+  .btn-neon:hover::before {
+    left: 100%;
+  }
+
+  /* Neon Border Glow */
+  .neon-border {
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    box-shadow: inset 0 0 15px rgba(0, 212, 255, 0.05);
+  }
+
+  .neon-border:focus-within {
+    border-color: #00d4ff;
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.2), inset 0 0 15px rgba(0, 212, 255, 0.05);
+  }
+
+  /* Cyber Input */
+  .cyber-input {
+    @apply w-full px-4 py-3 rounded-xl bg-navy-900/80 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-cyber-500 transition-all duration-300;
+    backdrop-filter: blur(10px);
+  }
+
+  .cyber-input:focus {
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.15);
+  }
+
+  /* Status Badges */
+  .badge-safe {
+    @apply px-3 py-1 rounded-full text-xs font-semibold;
+    background: rgba(0, 230, 118, 0.15);
+    color: #00e676;
+    border: 1px solid rgba(0, 230, 118, 0.3);
+  }
+
+  .badge-suspicious {
+    @apply px-3 py-1 rounded-full text-xs font-semibold;
+    background: rgba(255, 171, 0, 0.15);
+    color: #ffab00;
+    border: 1px solid rgba(255, 171, 0, 0.3);
+  }
+
+  .badge-phishing {
+    @apply px-3 py-1 rounded-full text-xs font-semibold;
+    background: rgba(255, 23, 68, 0.15);
+    color: #ff1744;
+    border: 1px solid rgba(255, 23, 68, 0.3);
+  }
+
+  /* Section Background */
+  .section-dark {
+    background: linear-gradient(180deg, #0a192f 0%, #112240 50%, #0a192f 100%);
+  }
+
+  /* Text Gradient */
+  .text-gradient {
+    background: linear-gradient(135deg, #00d4ff, #2979ff, #d500f9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Glow Text */
+  .glow-text {
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.5), 0 0 20px rgba(0, 212, 255, 0.3);
+  }
+}
+
+/* ── Utility Animations ───────────────────────────── */
+@layer utilities {
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient-shift 4s ease infinite;
+  }
+
+  @keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Skeleton loading */
+  .skeleton {
+    background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite;
+  }
+
+  @keyframes skeleton-loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+}
