@@ -116,13 +116,3 @@ phishguardpro/
 
 © 2026 Devicyt. All rights reserved.
 
----
-
-## 🔗 Links
-
-- **Portfolio**: [thedeviprasadcyt.vercel.app](https://thedeviprasadcyt.vercel.app/)
-- **LinkedIn**: [Deviprasad Muduli](https://www.linkedin.com/in/deviprasad-muduli-13b2b1387/)
-- **GitHub**: [thedeviprasadcyt](https://github.com/thedeviprasadcyt)
-"# phishguardpro" 
-"# phishguardpro" 
-"# phishguardpro" 
